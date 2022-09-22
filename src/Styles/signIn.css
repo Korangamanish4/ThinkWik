@@ -1,0 +1,124 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.container {
+    position:absolute;
+    background-color: bisque;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+    width:100%;
+}
+
+.signInCard {
+    background-color: white;
+    height: 365px;
+    width: 335px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 10px 10px 10px black;
+    border-width: 2px;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.signInCard p1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 15px;
+    color: orangered;
+    width: 80%;
+}
+
+.signInCard p {
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 15px;
+    color: orangered;
+}
+
+.signInCard:hover p {
+  cursor: pointer;
+}
+
+.signInInput {
+    height: 5%;
+    width: 76%;
+    border-width: 1.8px;
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+.userName {
+    justify-content: flex-start;
+    width: 80%;
+    margin-top: 20px;
+}
+
+.password {
+    justify-content: flex-start;
+    width: 80%;
+    margin-top: 10px;
+}
+
+.button {
+    width: 80%;
+    height : 9%;
+    margin-top: 25px;
+    border-radius: 10px;
+    background-color: bisque;
+    font-weight: 700;
+}
+
+.signInCard:hover button {
+    cursor: pointer;
+}
+
+.signUpCard {
+    background-color: white;
+    height: 410px;
+    width: 335px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 10px 10px 10px black;
+    border-width: 2px;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.signUpCard p1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 15px;
+    color: orangered;
+    width: 80%;
+}
+
+.email {
+    justify-content: flex-start;
+    width: 80%;
+    margin-top: 10px;
+}
+
+.signUpCard p {
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 15px;
+    color: orangered;
+}
+
+.signUpCard:hover p {
+  cursor: pointer;
+}
+
+.signUpCard:hover button {
+    cursor: pointer;
+}
