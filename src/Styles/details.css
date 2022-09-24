@@ -1,0 +1,54 @@
+* {
+    margin: 0px;
+    padding: 0px;
+} 
+
+.detailsContainer {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 40px;
+flex-direction: column;
+}
+
+.detailsButton{
+    width: 800px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.editButton {
+    padding-left : 10px;
+    padding-right : 10px;
+    padding-top : 4px;
+    padding-bottom : 4px;
+    margin-right: 20px;
+}
+
+.detailsButton :hover {
+ cursor: pointer;
+}
+
+.deleteButton {
+    padding-left : 10px;
+    padding-right : 10px;
+    padding-top : 4px;
+    padding-bottom : 4px;
+}
+
+.detailsCard{
+    height: 330px;
+    width: 825px;
+    background-color: bisque;
+    margin-top: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
+    row-gap: 50px;
+}
+
+.input{
+    display: flex;
+    flex-direction: row;
+    column-gap: 50px;
+    margin-top: 50px;
+}
