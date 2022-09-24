@@ -1,0 +1,11 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.dialogInput {
+    display: flex;
+    flex-direction: row;
+    column-gap: 50px;
+    margin-top: 40px;
+}

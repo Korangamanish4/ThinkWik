@@ -5,10 +5,10 @@
 
 .detailsContainer {
 display: flex;
-justify-content: center;
 align-items: center;
-margin-top: 40px;
 flex-direction: column;
+margin-top: 40px;
+height: 459px;
 }
 
 .detailsButton{

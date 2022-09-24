@@ -14,11 +14,17 @@ import { ContextMenu } from "primereact/contextmenu";
 import { useNavigate } from "react-router-dom";
 import "../Styles/home.css";
 import { Data } from "../Store/Assets/Data";
+import AddEditData from "../Component/AddEditData";
+import Loading from "../Component/Loader/Loader";
+import { useDispatch } from "react-redux";
+import { hideLoader, showLoader } from "../Store/Actions/commonAction";
 
 const Home = () => {
   const [product, setProduct] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const navigate = useNavigate()
+  const [dataDialog, setDataDialog] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const cm = useRef(null);
 
   const statuses = [
@@ -60,25 +66,40 @@ const Home = () => {
     }
   };
 
-  const addData = () => {
-    toast("Data Added");
+  const viewDetails = (userData) => {
+    navigate(`details/Id=${userData?.id}`);
   };
 
-  const viewDetails = (userData) => {
-   navigate(`details/Id=${userData?.id}`)
-  }
-
   const deleteUser = (userData) => {
-     const index = product.indexOf(userData)
-     Data.splice(index,1)
-     toast("Data Deleted")
-  }
+    dispatch(showLoader());
+    const index = product.indexOf(userData);
+    Data.splice(index, 1);
+    setTimeout(() => {
+      dispatch(hideLoader());
+      toast("Data Deleted");
+    }, 5000);
+  };
 
   const onRowEditComplete = (e) => {
     let { newData, index } = e;
+    const oldData = Data[index];
     Data.splice(index, 1);
-    Data.splice(index, 0, newData);
-    toast("Edit Successful");
+    const idArray = Data.map((item) => {
+      return item.id;
+    });
+    if (idArray.includes(newData?.id.toString())) {
+      toast(
+        `Data with Id ${newData?.id} already exists. Try Changin it's value`
+      );
+      Data.splice(index, 0, oldData);
+    } else {
+      dispatch(showLoader());
+      Data.splice(index, 0, newData);
+      setTimeout(() => {
+        dispatch(hideLoader());
+        toast("Edit Successful");
+      }, 5000);
+    }
   };
 
   const textEditor = (options) => {
@@ -147,6 +168,7 @@ const Home = () => {
 
   return (
     <div>
+      <Loading />
       <Header />
       <ContextMenu
         model={menuModel}
@@ -154,8 +176,13 @@ const Home = () => {
         onHide={() => setSelectedProduct(null)}
       />
       <div className="componentContainer">
+        <AddEditData
+          showDialog={dataDialog}
+          setShowDialog={setDataDialog}
+          header="Add Data"
+        />
         <div className="homeButton">
-          <button onClick={() => addData()}>Add Data</button>
+          <button onClick={() => setDataDialog(true)}>Add Data</button>
         </div>
         <div className="tableContainer">
           <div className="table">
