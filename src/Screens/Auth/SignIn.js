@@ -19,9 +19,9 @@ const SignIn = () => {
     else {
       dispatch(showLoader())
       setTimeout(() => {
-        if ( userDetail?.name.toUpperCase() === userName.toUpperCase()){
-          if (userDetail?.pass === password){
-            toast("Logged In")
+        if ( userDetail?.userName.toUpperCase() === userName.toUpperCase()){
+          if (userDetail?.password === password){
+            navigate("home")
           }
           else toast("Incorrect Password")
         }

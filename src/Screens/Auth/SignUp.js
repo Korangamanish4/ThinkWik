@@ -25,10 +25,10 @@ const SignUp = () => {
       toast("Password should be Alphanumeric and of minimum 8 characters as Admin@123")
     }
     else {
-      let details = {
-        name : userName,
-        pass : password,
-        mailId : email,
+      const details = {
+        userName : userName,
+        password : password,
+        email : email,
       }
       dispatch(saveUserData(details))
       dispatch(showLoader())
