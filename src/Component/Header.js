@@ -1,10 +1,25 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { toast } from 'react-toastify';
+import React, { useContext } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { timeOutTime } from "../Config/SetTimeOut-Config";
+import { ClearReducer, hideLoader, showLoader } from "../Store/Actions/commonAction";
 import '../Styles/header.css'
+import { UserContext } from "./UserContext";
 
 const Header = () => {
+
+  const setIsLoggedIn = useContext(UserContext)
+  const dispatch = useDispatch()
   const userDetail = useSelector((state) => state.user.userDetail);
+
+  const signOutUser = () => {
+    dispatch(showLoader())
+    localStorage.setItem("isLoggedIn", false)
+    setTimeout(() => {
+      dispatch(ClearReducer())
+      dispatch(hideLoader())
+      setIsLoggedIn(false)
+    },timeOutTime)
+  }
 
   return (
     <div className="header">
@@ -12,7 +27,7 @@ const Header = () => {
       <h1>{userDetail?.email}</h1>
       </div>
       <div className="signOutButton">
-      <button onClick={() => toast("Signed Out")}>Sign Out</button>
+      <button onClick={() => signOutUser()}>Sign Out</button>
       </div>
     </div>
   );

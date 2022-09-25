@@ -11,6 +11,7 @@ import Loading from "../Component/Loader/Loader";
 import { useDispatch } from "react-redux";
 import { hideLoader, showLoader } from "../Store/Actions/commonAction";
 import AddEditData from "../Component/AddEditData";
+import { timeOutTime, timeOutTimeNavigation } from "../Config/SetTimeOut-Config";
 
 const Details = () => {
   const [data, setData] = useState([]);
@@ -41,10 +42,10 @@ const Details = () => {
       Data.splice(index, 1);
       setShowData(false);
       toast("Data Deleted. Navigating to Home Page");
-    }, 5000);
+    }, timeOutTime);
     setTimeout(() => {
-      navigate("/home");
-    }, 7500);
+      navigate("/");
+    }, timeOutTimeNavigation);
   };
 
   const deleteData = () => {

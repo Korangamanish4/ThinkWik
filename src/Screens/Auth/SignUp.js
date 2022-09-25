@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { saveUserData } from "../../Store/Actions/userAction";
 import { showLoader, hideLoader } from "../../Store/Actions/commonAction"
 import { toast } from 'react-toastify';
 import "../../Styles/signIn.css";
+import { timeOutTime } from '../../Config/SetTimeOut-Config';
 
 const SignUp = () => {
 
@@ -30,13 +30,13 @@ const SignUp = () => {
         password : password,
         email : email,
       }
-      dispatch(saveUserData(details))
+     localStorage.setItem("userDetails", JSON.stringify(details))
       dispatch(showLoader())
       setTimeout(() => {
         dispatch(hideLoader())
         toast("Account Created")
         navigate('/')
-      },5000)
+      },timeOutTime)
     }
   }
 

@@ -7,7 +7,6 @@ import { Dropdown } from "primereact/dropdown";
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.css";
-//import "primeflex/primeflex.css";
 import Header from "../Component/Header";
 import { toast } from "react-toastify";
 import { ContextMenu } from "primereact/contextmenu";
@@ -18,6 +17,7 @@ import AddEditData from "../Component/AddEditData";
 import Loading from "../Component/Loader/Loader";
 import { useDispatch } from "react-redux";
 import { hideLoader, showLoader } from "../Store/Actions/commonAction";
+import { timeOutTime } from "../Config/SetTimeOut-Config";
 
 const Home = () => {
   const [product, setProduct] = useState([]);
@@ -77,7 +77,7 @@ const Home = () => {
     setTimeout(() => {
       dispatch(hideLoader());
       toast("Data Deleted");
-    }, 5000);
+    }, timeOutTime);
   };
 
   const onRowEditComplete = (e) => {
@@ -98,7 +98,7 @@ const Home = () => {
       setTimeout(() => {
         dispatch(hideLoader());
         toast("Edit Successful");
-      }, 5000);
+      }, timeOutTime);
     }
   };
 

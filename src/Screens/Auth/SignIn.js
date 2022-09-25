@@ -1,33 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
 import { showLoader, hideLoader } from "../../Store/Actions/commonAction"
+import { UserContext } from "../../Component/UserContext";
 import "../../Styles/signIn.css";
+import { saveUserData } from "../../Store/Actions/userAction";
+import { timeOutTime } from "../../Config/SetTimeOut-Config";
 
 const SignIn = () => {
   const [userName, setUserName] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userDetail = useSelector((state) => state.user.userDetail);
+  const setIsLoggedIn = useContext(UserContext);
 
   const authenticate = () => {
+    const details = JSON.parse(localStorage.getItem("userDetails"))
     if (userName == null || password == null){
       toast("Please provide Credentials")
     }
     else {
       dispatch(showLoader())
       setTimeout(() => {
-        if ( userDetail?.userName.toUpperCase() === userName.toUpperCase()){
-          if (userDetail?.password === password){
-            navigate("home")
+        if ( details?.userName?.toUpperCase() === userName?.toUpperCase()){
+          if (details?.password === password){
+           localStorage.setItem("isLoggedIn", "true")
+           dispatch(saveUserData(details))
+           setIsLoggedIn(true)
           }
           else toast("Incorrect Password")
         }
         else toast("User not Found")
         dispatch(hideLoader())
-      },5000)
+      },timeOutTime)
   }
   }
 

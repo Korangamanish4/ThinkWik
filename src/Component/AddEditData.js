@@ -9,6 +9,7 @@ import { showLoader, hideLoader } from "../Store/Actions/commonAction";
 import { toast } from "react-toastify";
 import { FormValidation } from "../CommonFiles/FormsValidation";
 import { Dropdown } from "primereact/dropdown";
+import { timeOutTime } from "../Config/SetTimeOut-Config";
 
 const AddEditData = ({ showDialog, setShowDialog, data, header, setData }) => {
   const [id, setId] = useState(data?.id);
@@ -79,12 +80,12 @@ const AddEditData = ({ showDialog, setShowDialog, data, header, setData }) => {
   const saveData = () => {
     dispatch(showLoader());
     if (header === "Add Data") {
-      Data.push(product);
+      Data.unshift(product);
       setTimeout(() => {
         setShowDialog(false);
         toast("Data Added");
         dispatch(hideLoader());
-      }, 5000);
+      }, timeOutTime);
     } else if (header === "Edit Data") {
       const index = Data.indexOf(data);
       Data.splice(index, 1);
@@ -94,7 +95,7 @@ const AddEditData = ({ showDialog, setShowDialog, data, header, setData }) => {
         setData(product);
         toast("Data Edited");
         dispatch(hideLoader());
-      }, 5000);
+      }, timeOutTime);
     }
   };
 
