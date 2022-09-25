@@ -22,7 +22,7 @@ const AddEditData = ({ showDialog, setShowDialog, data, header, setData }) => {
   const [inventoryStatus, setInventoryStatus] = useState(data?.inventoryStatus);
   const [rating, setRating] = useState(data?.rating);
   const [disableId, setDisableId] = useState(false);
-  const [product, setProduct] = useState({
+  const product = {
     id: "",
     code: "",
     name: "",
@@ -32,7 +32,7 @@ const AddEditData = ({ showDialog, setShowDialog, data, header, setData }) => {
     quantity: "",
     inventoryStatus: "",
     rating: "",
-  });
+  };
 
   const statuses = [
     { label: "In Stock", value: "INSTOCK" },
@@ -46,7 +46,7 @@ const AddEditData = ({ showDialog, setShowDialog, data, header, setData }) => {
     if (header === "Edit Data") {
       setDisableId(true);
     }
-  });
+  },[header]);
 
   const collectData = (callBack) => {
     product.id = id;

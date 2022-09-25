@@ -48,7 +48,7 @@ const Home = () => {
 
   useEffect(() => {
     setProduct(Data);
-  }, [Data]);
+  },[]);
 
   const getStatusLabel = (status) => {
     switch (status) {
