@@ -5,7 +5,7 @@
 
 .container {
     position:absolute;
-    background-color: bisque;
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,7 +14,7 @@
 }
 
 .signInCard {
-    background-color: white;
+    background-color: bisque;
     height: 365px;
     width: 335px;
     margin: auto;
@@ -72,7 +72,7 @@
     height : 9%;
     margin-top: 25px;
     border-radius: 10px;
-    background-color: bisque;
+    background-color: white;
     font-weight: 700;
 }
 
@@ -81,7 +81,7 @@
 }
 
 .signUpCard {
-    background-color: white;
+    background-color: bisque;
     height: 410px;
     width: 335px;
     margin: auto;
